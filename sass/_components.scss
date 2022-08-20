@@ -237,10 +237,16 @@
             width: 2.378rem;
             height: 1.359rem;
             color: colors.$color-white;
-            z-index: 350;        
-            transform: rotate(180deg);    
-            & svg {
+            z-index: 350;            
+            &-svg {
                 fill: colors.$color-white;
+                transition: variables.$transition-all-slowest;
+            }
+            &-svg-up {
+                transform: rotate(0deg);
+            }
+            &-svg-down {
+                transform: rotate(180deg);
             }
         }
     }

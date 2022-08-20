@@ -352,10 +352,16 @@ html {
   height: 1.359rem;
   color: #FFFFFF;
   z-index: 350;
-  transform: rotate(180deg);
 }
-.accordion-box__button-icon svg {
+.accordion-box__button-icon-svg {
   fill: #FFFFFF;
+  transition: all 0.5s;
+}
+.accordion-box__button-icon-svg-up {
+  transform: rotate(0deg);
+}
+.accordion-box__button-icon-svg-down {
+  transform: rotate(180deg);
 }
 
 .form {
