@@ -1,0 +1,58 @@
+@use 'colors';
+@use 'mixins';
+@use 'variables';
+
+.accordion-box {
+    &__value-proposition {
+        position: relative;
+        z-index: 3000;
+        background-color: colors.$color-white;
+        & .hide {
+            @include mixins.mediaQuery(viewport740) {
+                margin-top: calc(variables.$margin-top-50rem + -70rem);
+            }
+            @include mixins.mediaQuery(viewport460) {
+                margin-top: calc(variables.$margin-top-50rem + -80rem);
+            }
+            @include mixins.mediaQuery(viewport420) {
+                margin-top: calc(variables.$margin-top-50rem + -130rem);
+            }
+        }
+    }    
+    &__form {
+        position: relative;
+        z-index: 2500;
+        margin-top: 1.5rem;
+        background-image: linear-gradient(
+            to right bottom,
+            rgba(colors.$color-group-4c, 1),
+            rgba(colors.$color-group-4b, 1),
+        );
+        & .hide {
+            @include mixins.mediaQuery(viewport740) {
+                margin-top: calc(variables.$margin-top-50rem + -30rem);
+            }
+            @include mixins.mediaQuery(viewport470) {
+                margin-top: calc(variables.$margin-top-50rem + -40rem);
+            }
+        }
+    }
+    &__faq {
+        position: relative;
+        z-index: 2000;
+        margin-top: 1.5rem;
+        background-image: linear-gradient(
+            to right bottom,
+            rgba(colors.$color-group-3a, 1),
+            rgba(colors.$color-group-5a, 1),
+        );
+        & .hide {
+            @include mixins.mediaQuery(viewport740) {
+                margin-top: calc(variables.$margin-top-50rem + -30rem);
+            }
+            @include mixins.mediaQuery(viewport470) {
+                margin-top: calc(variables.$margin-top-50rem + -40rem);
+            }
+        }
+    }
+}

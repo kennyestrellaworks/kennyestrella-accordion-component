@@ -1,0 +1,27 @@
+{
+  "name": "snippets-accordion-component",
+  "version": "1.0.0",
+  "description": "An accordion component developed with html5, sass and javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watchSass": "sass --watch sass/style.scss:css/style.css",
+    "liveServer": "live-server",
+    "prefixCSS": "postcss css/style.css --use autoprefixer -o css/style.prefix.css",
+    "distCSS": "uglifycss css/style.prefix.css --output _dist/css/style.css",
+    "distBuild": "npm-run-all prefixCSS distCSS",
+    "startDev": "npm-run-all --parallel watchSass liveServer"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.8",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "sass": "^1.54.5",
+    "uglifycss": "^0.0.29"
+  }
+}

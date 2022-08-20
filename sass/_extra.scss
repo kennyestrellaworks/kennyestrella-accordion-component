@@ -1,0 +1,7 @@
+@use 'variables';
+
+.hide {
+    margin-top: variables.$margin-top-50rem;
+    opacity: 0;
+    visibility: hidden;
+}

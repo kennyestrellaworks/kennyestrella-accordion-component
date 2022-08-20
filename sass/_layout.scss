@@ -1,0 +1,22 @@
+@use 'variables';
+@use 'mixins';
+
+.wrap {
+    &__screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__viewport {
+        width: variables.$viewport-width; // A monitor  of 1920 width.
+        // background-color: tan;
+    }
+    &__content {
+        position: relative;
+        max-width: variables.$content-width; // Decided website content width.
+        margin: 0 auto;
+        @include mixins.mediaQuery(viewport1000) {
+            width: 100%;
+        }
+    }
+}

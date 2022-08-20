@@ -1,0 +1,537 @@
+@use 'colors';
+@use 'fonts';
+@use 'variables';
+@use 'mixins';
+
+.feature-block {
+    &__content {
+        position: relative;
+        z-index: 900;
+        &-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            // margin-top: -10rem;
+            @include mixins.mediaQuery(viewport740) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @include mixins.mediaQuery(viewport420) {
+                grid-template-columns: repeat(1, 1fr);
+            }  
+        }
+    }
+    &__item {
+        padding: 2rem;
+        min-height: 30rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-icon-image {
+            width: 5.2rem;
+        }
+        &-title {
+            font-family: fonts.$font-raleway-medium;
+            font-size: 2rem;
+            color: colors.$color-group-5b;
+            margin-top: 1rem;
+            @include mixins.mediaQuery(viewport900) { font-size: 1.9rem; }
+            @include mixins.mediaQuery(viewport800) { font-size: 1.8rem; }
+            @include mixins.mediaQuery(viewport700) { font-size: 1.7rem; }
+            @include mixins.mediaQuery(viewport600) { font-size: 1.6rem; }
+            @include mixins.mediaQuery(viewport500) { font-size: 1.5rem; }
+        }
+        &-description {
+            font-family: fonts.$font-roboto-light;
+            font-size: 1.6rem;
+            color: colors.$color-group-1c;
+            margin-top: 1rem;
+            @include mixins.mediaQuery(viewport900) { font-size: 1.5rem; }
+            @include mixins.mediaQuery(viewport800) { font-size: 1.45rem; }
+            @include mixins.mediaQuery(viewport700) { font-size: 1.4rem; }
+            @include mixins.mediaQuery(viewport600) { font-size: 1.35rem; }
+            @include mixins.mediaQuery(viewport500) { font-size: 1.3rem; }
+        }
+        & .button__primary {
+            margin-top: 2rem;
+        }
+    }
+}
+
+.button {
+    &__primary, &__secondary {
+        position: relative;
+        padding: 1rem 0;        
+        border: none;            
+        transition: variables.$transition-all-slowest;
+    }
+    &__primary {
+        width: 16rem;
+        background-image: linear-gradient(
+            to right top,
+            rgba(colors.$color-group-4b, 1),
+            rgba(colors.$color-group-3a, 1)
+        );
+        &-link {
+            position: relative;
+            font-family: fonts.$font-roboto-light;
+            font-size: 1.2rem;
+            color: colors.$color-white;
+            z-index: 300;
+            text-decoration: none;
+            @include mixins.mediaQuery(viewport700) { font-size: 1.1rem; }
+            @include mixins.mediaQuery(viewport400) { font-size: 1rem; }
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-2d, 1),
+                rgba(colors.$color-group-2c, 1)
+            );
+            transition: opacity 0.5s linear;
+            opacity: 0;
+            z-index: 200;
+        }      
+        &:hover {
+            cursor: pointer;
+        }
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+    &__secondary {
+        width: 14rem;
+        background-image: linear-gradient(
+            to right top,
+            rgba(colors.$color-group-2d, 1),
+            rgba(colors.$color-group-2c, 1)
+        );
+        border-radius: 8rem;
+        &-link {
+            position: relative;
+            font-family: fonts.$font-roboto-light;
+            font-size: 1.2rem;
+            color: colors.$color-white;
+            z-index: 300;
+            text-decoration: none;
+            text-transform: uppercase;
+            @include mixins.mediaQuery(viewport700) { font-size: 1.1rem; }
+            @include mixins.mediaQuery(viewport400) { font-size: 1rem; }
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-2b, 1),
+                rgba(colors.$color-group-2c, 1)
+            );
+            border-radius: 8rem;
+            transition: opacity 0.5s linear;
+            opacity: 0;
+            z-index: 200;
+        }      
+        &:hover {
+            cursor: pointer;
+        }
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+}
+
+.accordion-box {
+    margin: 2rem;
+    &__content {
+        overflow: hidden;
+        &-wrap {
+            transition: variables.$transition-all-slowest;
+        }
+    }
+    &__title-bar {
+        position: relative;
+        z-index: 1000;
+    }
+    &__button {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        width: 100%;
+        padding: 2rem 1.5rem;
+        &::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transition: opacity 0.5s linear;
+            opacity: 0;
+            z-index: 200;
+        }
+        &:hover::after {
+            opacity: 1;
+        }
+        &::after {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-2d, 1),
+                rgba(colors.$color-group-2c, 1)
+            );
+        }
+        &-active {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-2d, 1),
+                rgba(colors.$color-group-2c, 1)
+            );
+        }
+        &-value-proposition {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-5b, 1),
+                rgba(colors.$color-group-5a, 1)
+            );
+        }
+        &-form {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-6b, 1),
+                rgba(colors.$color-group-6a, 1)
+            );
+        }
+        &-faq {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba(colors.$color-group-3c, 1),
+                rgba(colors.$color-group-4d, 1)
+            );
+        }
+        &-link {
+            font-family: fonts.$font-raleway-medium;
+            font-size: 1.8rem;
+            color: colors.$color-white;
+            text-decoration: none;
+            z-index: 300;
+            @include mixins.mediaQuery(viewport900) { font-size: 1.9rem; }
+            @include mixins.mediaQuery(viewport800) { font-size: 1.8rem; }
+            @include mixins.mediaQuery(viewport700) { font-size: 1.7rem; }
+            @include mixins.mediaQuery(viewport600) { font-size: 1.6rem; }
+            @include mixins.mediaQuery(viewport500) { font-size: 1.5rem; }
+        }
+        &:hover { 
+            cursor: pointer;
+        }
+        &-icon {
+            display: block;
+            width: 2.378rem;
+            height: 1.359rem;
+            color: colors.$color-white;
+            z-index: 350;        
+            transform: rotate(180deg);    
+            & svg {
+                fill: colors.$color-white;
+            }
+        }
+    }
+}
+
+.form {
+    padding: 1.5rem;
+    width: 90%;
+    margin: 0 auto;
+    @include mixins.mediaQuery(viewport620) {
+        width: 95%;
+    }
+    &__column {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin: 3rem 0;
+        @include mixins.mediaQuery(viewport460) {
+            flex-direction: column;
+        }
+        &-left {
+            width: 30%;
+            @include mixins.mediaQuery(viewport570) {
+                width: 40%;
+            }
+            @include mixins.mediaQuery(viewport460) {
+                width: 100%;
+            }
+        }
+        &-right {
+            width: 70%;
+            padding-left: 12rem;
+            @include mixins.mediaQuery(viewport900) {
+                padding-left: 10rem;
+            }
+            @include mixins.mediaQuery(viewport800) {
+                padding-left: 8rem;
+            }
+            @include mixins.mediaQuery(viewport730) {
+                padding-left: 6rem;
+            }
+            @include mixins.mediaQuery(viewport690) {
+                padding-left: 4rem;
+            }
+            @include mixins.mediaQuery(viewport570) {
+                padding-left: 2rem;
+                width: 60%;
+            }
+            @include mixins.mediaQuery(viewport560) {
+                width: 60%;
+            }
+            @include mixins.mediaQuery(viewport460) {
+                padding-left: 0;
+                margin-top: 5rem;
+                width: 100%;
+            }
+        }
+    }
+    &__heading {
+        font-family: fonts.$font-rubik-medium;
+        font-size: 1.8rem;
+        color: colors.$color-group-2a;
+        letter-spacing: .2rem;
+        @include mixins.mediaQuery(viewport900) { font-size: 1.9rem; }
+        @include mixins.mediaQuery(viewport800) { font-size: 1.8rem; }
+        @include mixins.mediaQuery(viewport700) { font-size: 1.7rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.6rem; }
+        @include mixins.mediaQuery(viewport500) { font-size: 1.5rem; }
+        &-secondary {
+            font-family: fonts.$font-rubik-regular;
+            font-size: 1.4rem;
+            color: colors.$color-white;
+            @include mixins.mediaQuery(viewport800) { font-size: 1.3rem; }
+            @include mixins.mediaQuery(viewport600) { font-size: 1.2rem; }
+            @include mixins.mediaQuery(viewport400) { font-size: 1.1rem; }
+            @include mixins.mediaQuery(viewport200) { font-size: 1rem; }
+        }
+    }
+    &__details {
+        font-family: fonts.$font-rubik-regular;
+        font-size: 1.4rem;
+        color: colors.$color-white;
+        @include mixins.mediaQuery(viewport800) { font-size: 1.3rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.2rem; }
+        @include mixins.mediaQuery(viewport400) { font-size: 1.1rem; }
+        @include mixins.mediaQuery(viewport200) { font-size: 1rem; }
+        &-item {
+            margin: 2.5rem 0;
+        }
+    }
+    &__social {
+        margin-top: 1.5rem;
+        &-link {
+            &-icon {
+                width: 3rem;
+                transition: variables.$transition-all-slowest;
+            }      
+            &:hover &-icon {
+                transform: scale(1.2);
+            }        
+        }
+    }
+    &__fields {
+        margin-top: 2rem;
+    }
+    &__group-stacked {
+        display: flex;
+        flex-direction: row;
+        @include mixins.mediaQuery(viewport730) {
+            flex-direction: column;            
+        }
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+            @include mixins.mediaQuery(viewport730) {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__input-stacked {
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+    &__input {
+        border: none;
+        border-radius: .5rem;  
+        font-family: fonts.$font-rubik-regular;
+        font-size: 1.4rem;
+        background-color: colors.$color-group-4a;
+        width: 100%;
+        padding: 1.2rem;
+        transition: variables.$transition-all-slower;
+        @include mixins.mediaQuery(viewport800) { font-size: 1.3rem; }
+        @include mixins.mediaQuery(viewport730) { margin-bottom: 1rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.2rem; }
+        @include mixins.mediaQuery(viewport400) { font-size: 1.1rem; }
+        @include mixins.mediaQuery(viewport200) { font-size: 1rem; }
+        &::placeholder {
+            color: colors.$color-white;
+        }
+        &:focus {
+            outline: none;
+            box-shadow: 0 .5rem 2rem rgba(colors.$color-white, .2);
+            &:invalid {
+                box-shadow: 0 .5rem 2rem rgba(colors.$color-group-2d, .4);
+            }
+        }
+    }
+    &__textarea {
+        resize: none;
+        margin-bottom: 1rem;
+    }
+}
+
+.faq {
+    padding: 2rem 3rem;
+    &__column {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        @include mixins.mediaQuery(viewport580) {
+            flex-direction: column;
+        }
+        &-left {
+            width: 60%;
+            padding-right: 2rem;
+            @include mixins.mediaQuery(viewport580) {
+                width: 100%;
+            }
+        }
+        &-right {
+            width: 40%;
+            @include mixins.mediaQuery(viewport580) {
+                width: 60%;
+                margin-top: 3rem;
+            }
+            @include mixins.mediaQuery(viewport520) { width: 70%; }
+            @include mixins.mediaQuery(viewport460) { width: 80%; }
+            @include mixins.mediaQuery(viewport400) { width: 100%; }
+        }
+    }
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+    &__heading {
+        font-family: fonts.$font-rubik-medium;
+        font-size: 1.8rem;
+        color: colors.$color-group-2a;
+        letter-spacing: .1rem;
+        @include mixins.mediaQuery(viewport900) { font-size: 1.7rem; }
+        @include mixins.mediaQuery(viewport800) { font-size: 1.6rem; }
+        @include mixins.mediaQuery(viewport700) { font-size: 1.5rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.4rem; }
+        @include mixins.mediaQuery(viewport500) { font-size: 1.3rem; }
+    }
+    &__details {
+        font-family: fonts.$font-rubik-regular;
+        font-size: 1.4rem;
+        color: colors.$color-white;
+        @include mixins.mediaQuery(viewport900) { font-size: 1.3rem; }
+        @include mixins.mediaQuery(viewport800) { font-size: 1.2rem; }
+        @include mixins.mediaQuery(viewport700) { font-size: 1.1rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1rem; }
+    }
+}
+
+.card-block {
+    background-color: colors.$color-white;
+    &:hover {
+        cursor: pointer;
+    }
+    &__thumbnail {
+        width: 100%;
+    }
+    &__details {
+        padding: 1rem 2rem 2rem 2rem;
+    }
+    &__rating {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1.1rem;
+        &-star {
+            fill: colors.$color-group-2c;
+            width: 1.3rem;
+            margin-right: .8rem;            
+        }
+        &-text {
+            font-family: fonts.$font-rubik-regular;
+            font-size: 1.6rem;
+            color: colors.$color-group-2c;
+            @include mixins.mediaQuery(viewport900) { font-size: 1.5rem; }
+            @include mixins.mediaQuery(viewport800) { font-size: 1.4rem; }
+            @include mixins.mediaQuery(viewport700) { font-size: 1.3rem; }
+            @include mixins.mediaQuery(viewport600) { font-size: 1.2rem; }
+            @include mixins.mediaQuery(viewport500) { font-size: 1.1rem; }
+        }
+        &-stat {
+            color: colors.$color-group-1b;
+        }
+    }
+    &__heading {
+        font-family: fonts.$font-rubik-regular;
+        font-size: 1.6rem;
+        color: colors.$color-group-5a;
+        @include mixins.mediaQuery(viewport900) { font-size: 1.5rem; }
+        @include mixins.mediaQuery(viewport800) { font-size: 1.4rem; }
+        @include mixins.mediaQuery(viewport700) { font-size: 1.3rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.2rem; }
+        @include mixins.mediaQuery(viewport500) { font-size: 1.1rem; }
+    }
+    &__footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 2px solid colors.$color-group-1d;
+        padding: 1rem 2rem;
+    }
+    &__heart {
+        margin-top: .5rem;
+    }
+    &__heart-icon {
+        fill: colors.$color-group-1d;
+        width: 1.5rem;
+        transition: variables.$transition-all-slowest;
+        &:hover {
+            fill: colors.$color-group-2d;
+            cursor: pointer;
+        }
+    }
+    &__pricing {
+        font-family: fonts.$font-rubik-regular;
+        font-size: 1.6rem;
+        color: colors.$color-group-1b;
+        text-transform: uppercase;
+        @include mixins.mediaQuery(viewport900) { font-size: 1.5rem; }
+        @include mixins.mediaQuery(viewport800) { font-size: 1.4rem; }
+        @include mixins.mediaQuery(viewport700) { font-size: 1.3rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.2rem; }
+        @include mixins.mediaQuery(viewport500) { font-size: 1.1rem; }
+    }
+    &__price {
+        font-family: fonts.$font-rubik-medium;
+        font-size: 2rem;
+        color: colors.$color-group-1b;
+        @include mixins.mediaQuery(viewport900) { font-size: 1.9rem; }
+        @include mixins.mediaQuery(viewport800) { font-size: 1.8rem; }
+        @include mixins.mediaQuery(viewport700) { font-size: 1.7rem; }
+        @include mixins.mediaQuery(viewport600) { font-size: 1.6rem; }
+        @include mixins.mediaQuery(viewport500) { font-size: 1.5rem; }
+    }
+}
